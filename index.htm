@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko">
+  <body>
+    <h1>park5300 소개</h1>
+    <pre id="out">Loading...</pre>
+    <script>
+      // 배포된 Render 주소로 교체하세요.
+      const API = "https://<서비스이름>.onrender.com/me";
+      fetch(API)
+        .then(r => r.json())
+        .then(j => { document.getElementById('out').textContent = JSON.stringify(j, null, 2); })
+        .catch(e => { document.getElementById('out').textContent = e.toString(); });
+    </script>
+  </body>
+</html>

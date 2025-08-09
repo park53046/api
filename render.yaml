@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: park5300-fastapi
+    runtime: python         # (구 env: python은 권장X, runtime 사용)
+    region: singapore       # 한국과 가까운 리전 권장
+    plan: free              # 무료 플랜(안 보이면 starter로 변경)
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:${PORT:-8000} app:app
+    healthCheckPath: /healthz
+    autoDeploy: true
